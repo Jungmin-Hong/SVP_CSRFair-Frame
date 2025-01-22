@@ -67,7 +67,7 @@ const App = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4" style={{ paddingLeft: '15px' }}>
       <h1 className="text-lg font-bold mb-4">내 비버와 사진 찍기~!</h1>
 
       {/* 이미지 업로드 */}
