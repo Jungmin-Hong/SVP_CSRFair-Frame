@@ -118,7 +118,7 @@ const App = () => {
             ref={canvasRef}
             width={canvasWidth}
             height={canvasHeight}
-            style={{ border: '1px solid #ccc', maxWidth: '15%' }}
+            style={{ border: '1px solid #ccc', maxWidth: '50%' }}
           />
         ) : (
           <p className="text-gray-500">이미지를 업로드하면 미리보기가 여기에 표시됩니다.</p>
