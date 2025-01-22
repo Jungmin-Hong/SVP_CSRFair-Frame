@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Button from './Button';
 import Button2 from './Button2';
 
 const App = () => {
