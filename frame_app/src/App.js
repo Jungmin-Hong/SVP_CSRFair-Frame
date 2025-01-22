@@ -62,6 +62,7 @@ const App = () => {
 
   // 프레임 선택 함수
   const handleFrameChange = (frame) => {
+    console.log(`Frame changed to: ${frame}`); // 로그 추가ㅇ
     setSelectedFrame(frame);
   };
 
@@ -86,29 +87,48 @@ const App = () => {
         <h2 className="text-lg font-semibold">프레임 선택</h2>
         <div className="button-container">
           {['요리왕조리왕', '네일아티스트', '디자이너', '지게차드라이버', '반려견미용사', '반도체마스터', '네트워크전문', '중공업전문가', '전기설비기사'].map((frameName, index) => (
-            <div className="buttons" key={index}>
-              <Button
+            <div key={index}>
+              <button
                 onClick={() => handleFrameChange(`/frame${index + 1}.png`)}
-                className="p-2 bg-gray-300 rounded hover:bg-gray-500"
+                style={{
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  outline: 'none',
+                  borderRadius: '4px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  width: '130px',
+                  height: '35px',
+                  textDecoration: 'none',
+                  fontSize: '1rem',
+                  textAlign: 'center',
+                  marginBottom: '9px',
+                  backgroundColor: '#6E7DD9', // 기본 배경색
+                }}
+                onMouseEnter={(e) => (e.target.style.backgroundColor = '#1428A0')} // hover 효과
+                onMouseLeave={(e) => (e.target.style.backgroundColor = '#6E7DD9')} // hover 해제
+                onMouseDown={(e) => (e.target.style.backgroundColor = '#1428A0')} // active 상태
+                onMouseUp={(e) => (e.target.style.backgroundColor = '#6E7DD9')} // active 해제
               >
                 {frameName}
-              </Button>
+              </button>
+
             </div>
           ))}
         </div>
       </div>
 
       <Button2>
-      <div
-        onClick={downloadImage}
-        disabled={!imageSrc}
-        className={`mt-4 px-4 py-2 bg-blue-500 text-white font-bold text-lg rounded
+        <div
+          onClick={downloadImage}
+          disabled={!imageSrc}
+          className={`mt-4 px-4 py-2 bg-blue-500 text-white font-bold text-lg rounded
                     hover:bg-blue-700 focus:outline-none focus:ring-2
                     focus:ring-blue-500 focus:ring-opacity-50
                     ${!imageSrc ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-      >
-        Download Image
-      </div>
+        >
+          Download Image
+        </div>
       </Button2>
 
       {/* 캔버스 미리보기 */}
