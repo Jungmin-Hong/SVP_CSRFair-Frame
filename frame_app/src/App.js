@@ -1,15 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Button from './Button';
+import Button2 from './Button2';
 
 const App = () => {
   const [imageSrc, setImageSrc] = useState(null); // 업로드된 이미지 경로
   const [selectedFrame, setSelectedFrame] = useState('/frame1.png'); // 선택된 프레임 이미지 경로
   const canvasRef = useRef(null);
 
-  const mmToPixels = (mm, dpi = 300) => (mm / 25.4) * dpi;
-
-  const canvasWidth = mmToPixels(54); // 캔버스 가로 크기
-  const canvasHeight = mmToPixels(86); // 캔버스 세로 크기
+  const canvasWidth = 1080; // 캔버스 가로 크기
+  const canvasHeight = 1920; // 캔버스 세로 크기
 
   const handleImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -99,10 +98,8 @@ const App = () => {
         </div>
       </div>
 
-
-
-      {/* 이미지 다운로드 */}
-      <button class="buttondesign"
+      <Button2>
+      <div
         onClick={downloadImage}
         disabled={!imageSrc}
         className={`mt-4 px-4 py-2 bg-blue-500 text-white font-bold text-lg rounded
@@ -111,7 +108,8 @@ const App = () => {
                     ${!imageSrc ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
       >
         Download Image
-      </button>
+      </div>
+      </Button2>
 
       {/* 캔버스 미리보기 */}
       <div className="mt-4">
@@ -120,7 +118,7 @@ const App = () => {
             ref={canvasRef}
             width={canvasWidth}
             height={canvasHeight}
-            style={{ border: '1px solid #ccc', maxWidth: '100%' }}
+            style={{ border: '1px solid #ccc', maxWidth: '15%' }}
           />
         ) : (
           <p className="text-gray-500">이미지를 업로드하면 미리보기가 여기에 표시됩니다.</p>
